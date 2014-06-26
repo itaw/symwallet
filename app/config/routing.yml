@@ -1,4 +1,9 @@
-wallet_api:
-    resource: "@WalletApiBundle/Resources/config/routing.yml"
-    prefix:   /api
+#wallet_api:
+#    resource: "@WalletApiBundle/Resources/config/routing.yml"
+#    prefix:   /api
 
+#REST 
+rest: 
+    type: rest 
+    resource: "routing_rest.yml"
+    prefix: /api

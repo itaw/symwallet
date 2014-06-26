@@ -3,12 +3,18 @@
 namespace Wallet\DataBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Booking
  *
  * @ORM\Table("wallet_booking")
  * @ORM\Entity
+ * 
+ * @ExclusionPolicy("all")
  */
 class Booking
 {
@@ -19,6 +25,8 @@ class Booking
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * 
+     * @Expose
      */
     private $id;
 
@@ -26,6 +34,8 @@ class Booking
      * @var float
      *
      * @ORM\Column(name="value", type="float")
+     * 
+     * @Expose
      */
     private $value;
 
@@ -33,6 +43,8 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * 
+     * @Expose
      */
     private $title;
 
@@ -40,13 +52,17 @@ class Booking
      * @var \DateTime
      *
      * @ORM\Column(name="creation_date", type="datetimetz")
+     * 
+     * @Expose
      */
     private $creationDate;
 
     /**
      * @ORM\ManyToOne(targetEntity="Account", inversedBy="bookings")
      * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
-     * */
+     * 
+     * @Expose
+     */
     private $account;
 
     /**

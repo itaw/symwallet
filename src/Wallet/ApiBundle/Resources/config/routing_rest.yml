@@ -1,0 +1,14 @@
+accounts: 
+    type: rest
+    resource: "WalletApiBundle:Account"
+    name_prefix: api_
+
+bookings: 
+    type: rest
+    resource: "WalletApiBundle:Booking"
+    name_prefix: api_
+    
+clients: 
+    type: rest
+    resource: "WalletApiBundle:Client"
+    name_prefix: api_
