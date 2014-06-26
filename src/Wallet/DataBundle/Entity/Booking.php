@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Booking
 {
+
     /**
      * @var integer
      *
@@ -45,9 +46,8 @@ class Booking
     /**
      * @ORM\ManyToOne(targetEntity="Account", inversedBy="bookings")
      * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
-     **/
+     * */
     private $account;
-
 
     /**
      * Get id
@@ -143,4 +143,5 @@ class Booking
     {
         return $this->account;
     }
+
 }

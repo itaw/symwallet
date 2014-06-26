@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Client
 {
+
     /**
      * @var integer
      *
@@ -52,14 +53,13 @@ class Client
 
     /**
      * @ORM\OneToMany(targetEntity="Account", mappedBy="client")
-     **/
+     * */
     private $accounts;
 
     public function __construct()
     {
         $this->accounts = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -178,4 +178,5 @@ class Client
     {
         return $this->accounts;
     }
+
 }

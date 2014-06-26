@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Account
 {
+
     /**
      * @var integer
      *
@@ -45,15 +46,14 @@ class Account
 
     /**
      * @ORM\OneToMany(targetEntity="Booking", mappedBy="account")
-     **/
+     * */
     private $bookings;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="accounts")
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
-     **/
+     * */
     private $client;
-
 
     public function __construct()
     {
@@ -163,4 +163,5 @@ class Account
     {
         return $this->client;
     }
+
 }
