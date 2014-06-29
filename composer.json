@@ -24,7 +24,6 @@
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
-        "friendsofsymfony/rest-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master"
     },
     "scripts": {

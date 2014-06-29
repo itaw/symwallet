@@ -1,3 +1,0 @@
-wallet_api:
-    type: rest
-    resource: "@WalletApiBundle/Resources/config/routing_rest.yml"
