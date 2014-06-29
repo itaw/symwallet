@@ -20,11 +20,12 @@ class FrontendChooserListener
             return;
         }
 
-
-
-        if($this->mobileDetect->isMobile()) {
-
+        $frontend = 'desktop';
+        if ($this->mobileDetect->isMobile()) {
+            $frontend = 'mobile';
         }
+
+        $event->getRequest()->attributes->set('X-WALLET-FRONTEND', $frontend);
 
         return;
     }
