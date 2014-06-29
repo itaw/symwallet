@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Wallet\DataBundle\WalletDataBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Wallet\DesktopFrontendBundle\WalletDesktopFrontendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
