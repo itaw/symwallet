@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *
  * @ORM\Table("wallet_account")
  * @ORM\Entity
- * 
+ *
  * @ExclusionPolicy("all")
  */
 class Account
@@ -26,7 +26,7 @@ class Account
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
+     *
      * @Expose
      */
     private $id;
@@ -35,7 +35,7 @@ class Account
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, unique=true)
-     * 
+     *
      * @Expose
      */
     private $title;
@@ -43,8 +43,8 @@ class Account
     /**
      * @var string
      *
-     * @ORM\Column(name="account_number", type="string", length=255)
-     * 
+     * @ORM\Column(name="account_number", type="string", length=255, nullable=true)
+     *
      * @Expose
      */
     private $accountNumber;
@@ -53,14 +53,14 @@ class Account
      * @var \DateTime
      *
      * @ORM\Column(name="creation_date", type="datetimetz")
-     * 
+     *
      * @Expose
      */
     private $creationDate;
 
     /**
      * @ORM\OneToMany(targetEntity="Booking", mappedBy="account")
-     * 
+     *
      * @Expose
      */
     private $bookings;
@@ -68,7 +68,7 @@ class Account
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="accounts")
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
-     * 
+     *
      * @Expose
      */
     private $client;

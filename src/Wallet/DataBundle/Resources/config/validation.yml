@@ -1,0 +1,22 @@
+Wallet\DataBundle\Entity\Account:
+    properties:
+        title:
+            - NotBlank: ~
+        creationDate:
+            - DateTime: ~
+Wallet\DataBundle\Entity\Booking:
+    properties:
+        value:
+            - NotBlank: ~
+        title:
+            - NotBlank: ~
+        creationDate:
+            - DateTime: ~
+Wallet\DataBundle\Entity\Client:
+    properties:
+        firstName:
+            - NotBlank: ~
+        firstName:
+            - NotBlank: ~
+        creationDate:
+            - DateTime: ~
