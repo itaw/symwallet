@@ -24,7 +24,8 @@
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
-        "jms/serializer-bundle": "dev-master"
+        "jms/serializer-bundle": "dev-master",
+        "suncat/mobile-detect-bundle": "dev-master"
     },
     "scripts": {
         "post-root-package-install": [
