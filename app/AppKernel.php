@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Wallet\DataBundle\WalletDataBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Wallet\DesktopFrontendBundle\WalletDesktopFrontendBundle(),
+            new Wallet\FrontendBundle\WalletFrontendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

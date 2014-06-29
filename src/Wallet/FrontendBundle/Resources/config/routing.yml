@@ -1,0 +1,7 @@
+frontend_index:
+    pattern:  /
+    defaults: { _controller: WalletFrontendBundle:Page:index }
+
+frontend_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: WalletFrontendBundle:Page:dashboard }
