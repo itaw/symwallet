@@ -1,4 +1,0 @@
-wallet_desktop_frontend:
-    resource: "@WalletDesktopFrontendBundle/Resources/config/routing.yml"
-    prefix:   /
-
