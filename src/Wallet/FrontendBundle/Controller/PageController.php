@@ -10,12 +10,12 @@ class PageController extends AbstractController
 
     public function indexAction()
     {
-        return $this->redirect($this->generateUrl('frontend_index'));
+        return $this->redirect($this->generateUrl('frontend_dashboard'));
     }
 
     public function dashboardAction(Request $request)
     {
-        return $this->get('wallet.view_resolver')->renderTemplate($request->attributes->get('X-WALLET-FRONTEND'), 'Page:dashboard.html.twig');
+        return $this->renderTemplate($request->attributes->get('X-WALLET-FRONTEND'), 'Page:dashboard.html.twig');
     }
 
 }

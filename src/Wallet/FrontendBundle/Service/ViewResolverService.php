@@ -14,10 +14,10 @@ class ViewResolverService extends Controller
 
     public function renderTemplate($frontend, $template, $parameters = array())
     {
-        $templateName = ucfirst($frontend) . 'FrontendBundle' . ':' . $template;
+        $templateName = 'Wallet' . ucfirst($frontend) . 'FrontendBundle' . ':' . $template;
         $parameters['frontend'] = $frontend;
         $parameters['template'] = $templateName;
-
+        
         return $this->render($templateName, $parameters);
     }
 
