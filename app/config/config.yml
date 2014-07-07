@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
 
 framework:
     #esi:             ~
@@ -67,3 +68,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+mobile_detect:
+    redirect:
+        mobile: ~
+        tablet: ~
+    switch_device_view: ~
