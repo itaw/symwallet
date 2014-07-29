@@ -1,24 +1,29 @@
-api_bookings_collection:
+api_clients_collection:
     pattern:  /
-    defaults: { _controller: WalletApiBundle:Booking:collection }
+    defaults: { _controller: WalletApiBundle:Client:collection }
     methods: [GET]
     
-api_bookings_create:
+api_clients_create:
     pattern:  /
-    defaults: { _controller: WalletApiBundle:Booking:create }
+    defaults: { _controller: WalletApiBundle:Client:create }
     methods: [POST]
 
-api_bookings_object:
-    pattern:  /{accountId}
-    defaults: { _controller: WalletApiBundle:Booking:object }
+api_clients_object:
+    pattern:  /{clientId}
+    defaults: { _controller: WalletApiBundle:Client:object }
     methods: [GET]
     
-api_bookings_update:
-    pattern:  /{accountId}
-    defaults: { _controller: WalletApiBundle:Booking:update }
+api_clients_update:
+    pattern:  /{clientId}
+    defaults: { _controller: WalletApiBundle:Client:update }
     methods: [PUT]
     
-api_bookings_delete:
-    pattern:  /{accountId}
-    defaults: { _controller: WalletApiBundle:Booking:delete }
+api_clients_delete:
+    pattern:  /{clientId}
+    defaults: { _controller: WalletApiBundle:Client:delete }
     methods: [DELETE]
+    
+#relations
+api_clients_accounts:
+    resource: "@WalletApiBundle/Resources/config/Client/Account/routing.yml"
+    prefix:   /{clientId}/accounts

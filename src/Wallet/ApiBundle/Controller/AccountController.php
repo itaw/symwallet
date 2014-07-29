@@ -11,5 +11,19 @@ use Wallet\ApiBundle\Controller\AbstractApiController;
  */
 class AccountController extends AbstractApiController
 {
-    
+
+    public function collectionAction()
+    {
+        $accounts = $this->getDoctrine()->getRepository('WalletDataBundle:Account')->findAll();
+
+        return $this->jsonResponse($this->serialize($accounts));
+    }
+
+    public function objectAction($accountId)
+    {
+        $account = $this->getDoctrine()->getRepository('WalletDataBundle:Account')->findOneById($accountId);
+
+        return $this->jsonResponse($this->serialize($account));
+    }
+
 }

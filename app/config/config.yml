@@ -74,3 +74,8 @@ mobile_detect:
         mobile: ~
         tablet: ~
     switch_device_view: ~
+
+jms_serializer:
+    property_naming:
+        separator:  
+        lower_case: false

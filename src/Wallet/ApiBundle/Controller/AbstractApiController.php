@@ -30,4 +30,15 @@ abstract class AbstractApiController extends Controller implements CorsControlle
         return $response;
     }
 
+    /**
+     * Serilizes Data to JSON
+     * 
+     * @param object $data  Entity Data
+     * @return string       A JSON String
+     */
+    protected function serialize($data)
+    {
+        return $this->get('jms_serializer')->serialize($data, 'json');
+    }
+
 }

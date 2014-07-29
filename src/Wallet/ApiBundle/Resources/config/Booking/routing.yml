@@ -9,16 +9,16 @@ api_bookings_create:
     methods: [POST]
 
 api_bookings_object:
-    pattern:  /{accountId}
+    pattern:  /{bookingId}
     defaults: { _controller: WalletApiBundle:Booking:object }
     methods: [GET]
     
 api_bookings_update:
-    pattern:  /{accountId}
+    pattern:  /{bookingId}
     defaults: { _controller: WalletApiBundle:Booking:update }
     methods: [PUT]
     
 api_bookings_delete:
-    pattern:  /{accountId}
+    pattern:  /{bookingId}
     defaults: { _controller: WalletApiBundle:Booking:delete }
     methods: [DELETE]
