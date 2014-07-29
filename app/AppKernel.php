@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new SunCat\MobileDetectBundle\MobileDetectBundle(),
             new Wallet\ApiBundle\WalletApiBundle(),
+            new Wallet\DesktopFrontendBundle\WalletDesktopFrontendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
