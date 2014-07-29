@@ -1,6 +1,10 @@
 index:
     pattern: /
     defaults: { _controller: FrameworkBundle:Redirect:redirect, route: dashboard, permanent: true }
+    
+imprint:
+    pattern:  /imprint
+    defaults: { _controller: WalletDesktopFrontendBundle:Page:imprint }
 
 dashboard:
     pattern:  /dashboard

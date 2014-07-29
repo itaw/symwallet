@@ -16,5 +16,10 @@ class PageController extends Controller
     {
         return $this->render('WalletDesktopFrontendBundle:Page:dashboard.html.twig');
     }
+    
+    public function imprintAction()
+    {
+        return $this->render('WalletDesktopFrontendBundle:Page:imprint.html.twig');
+    }
 
 }

@@ -11,6 +11,9 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
+        imprint:
+            pattern:    ^/imprint
+            anonymous:  ~
         ajax_calls:
             pattern:    ^/_wdt
             anonymous:  ~
@@ -34,3 +37,4 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/_wdt, roles: 'IS_AUTHENTICATED_ANONYMOUSLY' }
+        - { path: ^/imprint, roles: 'IS_AUTHENTICATED_ANONYMOUSLY' }
