@@ -1,0 +1,4 @@
+wallet_api:
+    resource: "@WalletApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
