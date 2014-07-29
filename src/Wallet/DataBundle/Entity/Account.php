@@ -60,16 +60,12 @@ class Account
 
     /**
      * @ORM\OneToMany(targetEntity="Booking", mappedBy="account")
-     *
-     * @Expose
      */
     private $bookings;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="accounts")
-     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
-     *
-     * @Expose
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")     *
      */
     private $client;
 

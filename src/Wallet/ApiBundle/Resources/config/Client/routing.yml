@@ -1,0 +1,24 @@
+api_bookings_collection:
+    pattern:  /
+    defaults: { _controller: WalletApiBundle:Booking:collection }
+    methods: [GET]
+    
+api_bookings_create:
+    pattern:  /
+    defaults: { _controller: WalletApiBundle:Booking:create }
+    methods: [POST]
+
+api_bookings_object:
+    pattern:  /{accountId}
+    defaults: { _controller: WalletApiBundle:Booking:object }
+    methods: [GET]
+    
+api_bookings_update:
+    pattern:  /{accountId}
+    defaults: { _controller: WalletApiBundle:Booking:update }
+    methods: [PUT]
+    
+api_bookings_delete:
+    pattern:  /{accountId}
+    defaults: { _controller: WalletApiBundle:Booking:delete }
+    methods: [DELETE]

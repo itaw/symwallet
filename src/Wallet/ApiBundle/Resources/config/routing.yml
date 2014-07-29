@@ -1,0 +1,11 @@
+api_accounts:
+    resource: "@WalletApiBundle/Resources/config/Account/routing.yml"
+    prefix:   /accounts
+
+api_bookings:
+    resource: "@WalletApiBundle/Resources/config/Booking/routing.yml"
+    prefix:   /bookings
+
+api_clients:
+    resource: "@WalletApiBundle/Resources/config/Client/routing.yml"
+    prefix:   /clients
