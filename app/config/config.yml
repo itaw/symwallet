@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator: ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -79,3 +79,8 @@ jms_serializer:
     property_naming:
         separator:  
         lower_case: false
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Wallet\UserBundle\Entity\User
