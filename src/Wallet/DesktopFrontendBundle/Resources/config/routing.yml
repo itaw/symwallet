@@ -1,3 +1,7 @@
 index:
-    pattern:  /
-    defaults: { _controller: WalletDesktopFrontendBundle:Page:index }
+    pattern: /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: dashboard, permanent: true }
+
+dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: WalletDesktopFrontendBundle:Page:dashboard }

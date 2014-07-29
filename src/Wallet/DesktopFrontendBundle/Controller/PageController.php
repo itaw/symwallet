@@ -12,9 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class PageController extends Controller
 {
 
-    public function indexAction()
+    public function dashboardAction()
     {
-        return $this->render('WalletDesktopFrontendBundle:Page:index.html.twig');
+        return $this->render('WalletDesktopFrontendBundle:Page:dashboard.html.twig');
     }
 
 }
