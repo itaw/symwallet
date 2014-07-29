@@ -26,4 +26,16 @@ class AccountController extends AbstractApiController
         return $this->jsonResponse($this->serialize($account));
     }
 
+    /*
+     * Relations
+     */
+
+    public function getBookingsAction($accountId)
+    {
+        $account = $this->getDoctrine()->getRepository('WalletDataBundle:Account')->findOneById($accountId);
+        $bookings = $this->getDoctrine()->getRepository('WalletDataBundle:Booking')->findByAccount($account);
+
+        return $this->jsonResponse($this->serialize($bookings));
+    }
+
 }
