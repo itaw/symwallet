@@ -34,7 +34,7 @@ class Account
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, unique=true)
+     * @ORM\Column(name="title", type="string", length=255)
      *
      * @Expose
      */
@@ -60,15 +60,13 @@ class Account
 
     /**
      * @ORM\OneToMany(targetEntity="Booking", mappedBy="account")
-     *
-     * @Expose
      */
     private $bookings;
 
     /**
      * @ORM\ManyToOne(targetEntity="Client", inversedBy="accounts")
      * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
-     *
+     * 
      * @Expose
      */
     private $client;

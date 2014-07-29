@@ -70,7 +70,6 @@ class Client
     /**
      * @ORM\OneToMany(targetEntity="Account", mappedBy="client")
      * 
-     * @Expose
      */
     private $accounts;
 

@@ -1,9 +1,1 @@
 services:
-    kernel.listener.fronted_chooser:
-        class: Wallet\FrontendBundle\Listener\FrontendChooserListener
-        arguments:
-            - @mobile_detect.mobile_detector
-        tags:
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
-    wallet.view_resolver:
-        class: Wallet\FrontendBundle\Service\ViewResolverService

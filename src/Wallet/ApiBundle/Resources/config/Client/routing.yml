@@ -1,0 +1,29 @@
+api_clients_collection:
+    pattern:  /
+    defaults: { _controller: WalletApiBundle:Client:collection }
+    methods: [GET]
+    
+api_clients_create:
+    pattern:  /
+    defaults: { _controller: WalletApiBundle:Client:create }
+    methods: [POST]
+
+api_clients_object:
+    pattern:  /{clientId}
+    defaults: { _controller: WalletApiBundle:Client:object }
+    methods: [GET]
+    
+api_clients_update:
+    pattern:  /{clientId}
+    defaults: { _controller: WalletApiBundle:Client:update }
+    methods: [PUT]
+    
+api_clients_delete:
+    pattern:  /{clientId}
+    defaults: { _controller: WalletApiBundle:Client:delete }
+    methods: [DELETE]
+    
+#relations
+api_clients_accounts:
+    resource: "@WalletApiBundle/Resources/config/Client/Account/routing.yml"
+    prefix:   /{clientId}/accounts
