@@ -69,9 +69,14 @@ class Client
 
     /**
      * @ORM\OneToMany(targetEntity="Account", mappedBy="client")
-     * 
      */
     private $accounts;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Wallet\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     public function __construct()
     {
@@ -194,6 +199,16 @@ class Client
     public function getAccounts()
     {
         return $this->accounts;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 }

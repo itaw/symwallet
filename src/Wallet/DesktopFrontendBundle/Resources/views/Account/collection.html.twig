@@ -1,0 +1,24 @@
+{% extends "WalletDesktopFrontendBundle::layout.html.twig" %}
+
+{% block currentPage %}accounts{% endblock %}
+
+{% block content %}
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Account</th>
+            <th>AccountNumber</th>
+            <th>Balance</th>
+        </tr>
+
+        {% for account in accounts %}
+            <tr>
+                <td>{{ account.title }}</td>
+                <td>{{ account.accountNumber }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+
+    </table>    
+
+{% endblock %}
