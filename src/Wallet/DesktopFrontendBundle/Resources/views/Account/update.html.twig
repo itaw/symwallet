@@ -1,0 +1,54 @@
+{% extends "WalletDesktopFrontendBundle::layout.html.twig" %}
+
+{% block currentPage %}accounts{% endblock %}
+
+{% block title %}Update Account{% endblock %}
+
+{% block content %}
+
+    {# flash messages #}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {{flashMessage}}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {{flashMessage}}
+        </div>
+    {% endfor %}
+
+    <div class="panel panel-warning">
+        <div class="panel-body">
+
+            <form method="post">
+                <!-- Form Name -->
+                <legend>Update Account</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="" value="{{ account.title }}">
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label for="account_number">Account Number</label>
+                    <input id="account_number" name="account_number" type="text" placeholder="Account Number" class="form-control input-md" value="{{ account.accountNumber }}">
+                </div>
+
+                <input type="hidden" name="sent" value="1">
+
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-warning">Update</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

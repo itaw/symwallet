@@ -2,14 +2,37 @@
 
 {% block currentPage %}accounts{% endblock %}
 
+{% block title %}Accounts{% endblock %}
+
 {% block content %}
 
     <div class="well well-sm">
-        <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Account</a>
+        <a href="{{ path('accounts_create') }}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Account</a>
         <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Booking</a>
         <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Fixture</a>
         <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Payment</a>
     </div>
+
+    {% if accounts|length == 0 %}
+        <div class="alert alert-warning" role="alert">
+            No Accounts found!
+        </div>
+    {% endif %}
+
+    {# flash messages #}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {{flashMessage}}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {{flashMessage}}
+        </div>
+    {% endfor %}
 
     {% for account in accounts %}
         {# account #}
@@ -38,7 +61,8 @@
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span> </a>
+                        <a href="{{ path('accounts_delete', {accountId: account.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a href="{{ path('accounts_update', {accountId: account.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit"></span></a>
                     </td>
                 </tr>
 

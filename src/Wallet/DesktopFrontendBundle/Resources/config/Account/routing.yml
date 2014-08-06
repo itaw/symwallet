@@ -1,3 +1,15 @@
 accounts_collection:
     pattern:  /
     defaults: { _controller: WalletDesktopFrontendBundle:Account:collection }
+    
+accounts_create:
+    pattern:  /create
+    defaults: { _controller: WalletDesktopFrontendBundle:Account:create }
+    
+accounts_delete:
+    pattern:  /{accountId}/delete
+    defaults: { _controller: WalletDesktopFrontendBundle:Account:delete }
+    
+accounts_update:
+    pattern:  /{accountId}/update
+    defaults: { _controller: WalletDesktopFrontendBundle:Account:update }

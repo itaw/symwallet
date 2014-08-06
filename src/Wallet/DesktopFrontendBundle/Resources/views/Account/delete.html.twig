@@ -1,0 +1,41 @@
+{% extends "WalletDesktopFrontendBundle::layout.html.twig" %}
+
+{% block currentPage %}accounts{% endblock %}
+
+{% block title %}Delete Account{% endblock %}
+
+{% block content %}
+
+    {# flash messages #}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {{flashMessage}}
+        </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {{flashMessage}}
+        </div>
+    {% endfor %}
+
+    <div class="panel panel-danger">
+        <div class="panel-body">
+
+            <form method="post">
+                <h2>Delete Account '{{ account.title }}'?</h2>
+
+                <input type="hidden" name="sent" value="1">
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <a href="{{ path('accounts_collection') }}" class="btn btn-danger">Back</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
