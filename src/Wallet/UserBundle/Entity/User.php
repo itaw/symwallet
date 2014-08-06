@@ -31,4 +31,14 @@ class User extends BaseUser
         // your own logic
     }
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }

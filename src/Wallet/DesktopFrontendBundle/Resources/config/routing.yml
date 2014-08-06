@@ -13,3 +13,7 @@ dashboard:
 accounts:
     resource: "@WalletDesktopFrontendBundle/Resources/config/Account/routing.yml"
     prefix:   /accounts
+    
+fixtures:
+    resource: "@WalletDesktopFrontendBundle/Resources/config/Fixture/routing.yml"
+    prefix:   /fixtures

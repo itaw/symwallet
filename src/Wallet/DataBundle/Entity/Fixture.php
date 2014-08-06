@@ -62,6 +62,15 @@ class Fixture
     private $bookings;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="target", type="float", nullable=true)
+     * 
+     * @Expose
+     */
+    private $target;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -179,6 +188,29 @@ class Fixture
     public function getBookings()
     {
         return $this->bookings;
+    }
+
+    /**
+     * Set target
+     *
+     * @param float $target
+     * @return Fixture
+     */
+    public function setTarget($target)
+    {
+        $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * Get target
+     *
+     * @return float 
+     */
+    public function getTarget()
+    {
+        return $this->target;
     }
 
 }

@@ -9,7 +9,7 @@
     <div class="well well-sm">
         <a href="{{ path('accounts_create') }}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Account</a>
         <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Booking</a>
-        <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Fixture</a>
+        <a href="{{ path('fixtures_create') }}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Fixture</a>
         <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Payment</a>
     </div>
 
@@ -94,11 +94,15 @@
                     </tr>
                     {% for fixture in account.fixtures %}
                         <tr class="active">
-                            <td colspan="1">
+                            <td>
                                 &nbsp;&nbsp;&nbsp;&nbsp;{{ fixture.title }}
                             </td>
-                            <td colspan="2">
+                            <td>
                                 {{ fixture.value }}&euro;
+                            </td>
+                            <td>
+                                <a href="{{ path('fixtures_delete', {fixtureId: fixture.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="{{ path('fixtures_update', {fixtureId: fixture.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit"></span></a>
                             </td>
                         </tr>
                     {% endfor %}
