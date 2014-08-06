@@ -73,7 +73,7 @@
                 {# fixtures #}
                 {% if account.fixtures|length > 0 %}                
                     <tr class="active">
-                        <td colspan="3">
+                        <td colspan="5">
                             <strong>Fixtures</strong> <span class="label label-success">{{ getAccountFixturesSum(account.id) }}&euro;</span>
                         </td>
                     </tr>
@@ -82,17 +82,20 @@
                             <td>
                                 &nbsp;&nbsp;&nbsp;&nbsp;{{ fixture.title }}
                             </td>
-                            <td>
-                                {% if fixture.target > 0 %}
-                                    <span class="label label-default">{{ fixture.value }}&euro; von {{ fixture.target }}&euro;</span>
-                                    <br><br>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ ((fixture.value / fixture.target) * 100)|number_format(0, '.', ',') }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((fixture.value / fixture.target) * 100)|number_format(0, '.', ',') }}%"></div>
+                            {% if fixture.target > 0 %}
+                                <td>
+                                    <div class="progress wallet-progress">
+                                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ ((fixture.value / fixture.target) * 100)|number_format(0, '.', ',') }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((fixture.value / fixture.target) * 100)|number_format(0, '.', ',') }}%">
+                                            {{ ((fixture.value / fixture.target) * 100)|number_format(0, '.', ',') }}%
+                                        </div>
                                     </div>
-                                {% else %}
+                                    <span class="label label-default">{{ fixture.value }}&euro; von {{ fixture.target }}&euro;</span>
+                                </td>
+                            {% else %}
+                                <td>
                                     <span class="label label-default">{{ fixture.value }}&euro;</span>
-                                {% endif %}
-                            </td>
+                                </td>
+                            {% endif %}
                             <td>
                                 <a href="{{ path('fixtures_delete', {fixtureId: fixture.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
                                 <a href="{{ path('fixtures_update', {fixtureId: fixture.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit"></span></a>

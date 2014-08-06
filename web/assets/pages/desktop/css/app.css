@@ -45,3 +45,7 @@ body {
 }
 
 .muted {color: #999;}
+
+.wallet-progress {
+    margin-bottom: 0;
+}
