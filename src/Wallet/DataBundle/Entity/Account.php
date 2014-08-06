@@ -82,6 +82,15 @@ class Account
     private $payments;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="balance", type="float")
+     * 
+     * @Expose
+     */
+    private $balance;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -290,6 +299,29 @@ class Account
     public function getPayments()
     {
         return $this->payments;
+    }
+
+    /**
+     * Set balance
+     *
+     * @param float $balance
+     * @return Account
+     */
+    public function setBalance($balance)
+    {
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Get balance
+     *
+     * @return float 
+     */
+    public function getBalance()
+    {
+        return $this->balance;
     }
 
 }

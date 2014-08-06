@@ -9,13 +9,23 @@
             <th>Account</th>
             <th>AccountNumber</th>
             <th>Balance</th>
+            <th>Available Balance</th>
         </tr>
 
         {% for account in accounts %}
             <tr>
                 <td>{{ account.title }}</td>
                 <td>{{ account.accountNumber }}</td>
-                <td></td>
+
+                {% set balance = account.balance %}
+                <td {% if balance < 0 %}class="danger"{% elseif balance == 0 %}class="warning"{% else %}class="success"{% endif %}>
+                    {{ balance }}&euro;
+                </td>
+
+                {% set availableBalance = getAvailableAccountBalance(account.id) %}
+                <td {% if availableBalance < 0 %}class="danger"{% elseif availableBalance == 0 %}class="warning"{% else %}class="success"{% endif %}>
+                    {{ availableBalance }}&euro;
+                </td>
             </tr>
         {% endfor %}
 

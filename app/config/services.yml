@@ -1,1 +1,11 @@
 services:
+    wallet.account_balance_aggregator:
+        class: Wallet\DataBundle\Service\AccountBalanceAggregator
+        arguments:
+            - @doctrine
+    wallet.twig.account_extension:
+        class: Wallet\DataBundle\Twig\AccountExtension
+        arguments:
+            - @wallet.account_balance_aggregator
+        tags:
+            - { name: twig.extension }
