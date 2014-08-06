@@ -71,15 +71,30 @@ class Account
      */
     private $client;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Fixture", mappedBy="account")
+     */
+    private $fixtures;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Payment", mappedBy="account")
+     */
+    private $payments;
+
+    /**
+     * Constructor
+     */
     public function __construct()
     {
-        $this->bookings = new ArrayCollection();
+        $this->bookings = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fixtures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->payments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -102,7 +117,7 @@ class Account
     /**
      * Get title
      *
-     * @return string
+     * @return string 
      */
     public function getTitle()
     {
@@ -125,7 +140,7 @@ class Account
     /**
      * Get accountNumber
      *
-     * @return string
+     * @return string 
      */
     public function getAccountNumber()
     {
@@ -133,15 +148,22 @@ class Account
     }
 
     /**
+     * Set creationDate
+     *
      * @param \DateTime $creationDate
+     * @return Account
      */
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
+
+        return $this;
     }
 
     /**
-     * @return \DateTime
+     * Get creationDate
+     *
+     * @return \DateTime 
      */
     public function getCreationDate()
     {
@@ -149,15 +171,32 @@ class Account
     }
 
     /**
-     * @param mixed $bookings
+     * Add bookings
+     *
+     * @param \Wallet\DataBundle\Entity\Booking $bookings
+     * @return Account
      */
-    public function setBookings($bookings)
+    public function addBooking(\Wallet\DataBundle\Entity\Booking $bookings)
     {
-        $this->bookings = $bookings;
+        $this->bookings[] = $bookings;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Remove bookings
+     *
+     * @param \Wallet\DataBundle\Entity\Booking $bookings
+     */
+    public function removeBooking(\Wallet\DataBundle\Entity\Booking $bookings)
+    {
+        $this->bookings->removeElement($bookings);
+    }
+
+    /**
+     * Get bookings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getBookings()
     {
@@ -165,19 +204,92 @@ class Account
     }
 
     /**
-     * @param mixed $client
+     * Set client
+     *
+     * @param \Wallet\DataBundle\Entity\Client $client
+     * @return Account
      */
-    public function setClient($client)
+    public function setClient(\Wallet\DataBundle\Entity\Client $client = null)
     {
         $this->client = $client;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get client
+     *
+     * @return \Wallet\DataBundle\Entity\Client 
      */
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * Add fixtures
+     *
+     * @param \Wallet\DataBundle\Entity\Fixture $fixtures
+     * @return Account
+     */
+    public function addFixture(\Wallet\DataBundle\Entity\Fixture $fixtures)
+    {
+        $this->fixtures[] = $fixtures;
+
+        return $this;
+    }
+
+    /**
+     * Remove fixtures
+     *
+     * @param \Wallet\DataBundle\Entity\Fixture $fixtures
+     */
+    public function removeFixture(\Wallet\DataBundle\Entity\Fixture $fixtures)
+    {
+        $this->fixtures->removeElement($fixtures);
+    }
+
+    /**
+     * Get fixtures
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFixtures()
+    {
+        return $this->fixtures;
+    }
+
+    /**
+     * Add payments
+     *
+     * @param \Wallet\DataBundle\Entity\Payment $payments
+     * @return Account
+     */
+    public function addPayment(\Wallet\DataBundle\Entity\Payment $payments)
+    {
+        $this->payments[] = $payments;
+
+        return $this;
+    }
+
+    /**
+     * Remove payments
+     *
+     * @param \Wallet\DataBundle\Entity\Payment $payments
+     */
+    public function removePayment(\Wallet\DataBundle\Entity\Payment $payments)
+    {
+        $this->payments->removeElement($payments);
+    }
+
+    /**
+     * Get payments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPayments()
+    {
+        return $this->payments;
     }
 
 }
