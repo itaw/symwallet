@@ -20,3 +20,11 @@ Wallet\DataBundle\Entity\Client:
             - NotBlank: ~
         creationDate:
             - DateTime: ~
+Wallet\DataBundle\Entity\Fixture:
+    properties:
+        title:
+            - NotBlank: ~
+Wallet\DataBundle\Entity\Payment:
+    properties:
+        title:
+            - NotBlank: ~

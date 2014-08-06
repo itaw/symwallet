@@ -126,7 +126,7 @@ class AccountController extends Controller
                 $errorsString = (string) $errors;
                 $session->getFlashBag()->add('error', $errorsString);
 
-                return $this->render('WalletDesktopFrontendBundle:Account:update.html.twig');
+                return $this->render('WalletDesktopFrontendBundle:Account:update.html.twig', array('account' => $account));
             }
 
             $em->flush();

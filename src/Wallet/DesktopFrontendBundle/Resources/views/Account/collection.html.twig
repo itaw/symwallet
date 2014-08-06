@@ -19,21 +19,6 @@
         </div>
     {% endif %}
 
-    {# flash messages #}
-    {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            {{flashMessage}}
-        </div>
-    {% endfor %}
-
-    {% for flashMessage in app.session.flashbag.get('error') %}
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            {{flashMessage}}
-        </div>
-    {% endfor %}
-
     {% for account in accounts %}
         {# account #}
         <div class="panel panel-default">
@@ -52,12 +37,12 @@
                 <tr>
                     {% set balance = account.balance %}
                     <td {% if balance < 0 %}class="danger"{% elseif balance == 0 %}class="warning"{% else %}class="success"{% endif %}>
-                        {{ balance }}&euro;
+                        <span class="label label-default">{{ balance }}&euro;</span>
                     </td>
 
                     {% set availableBalance = getAvailableAccountBalance(account.id) %}
                     <td {% if availableBalance < 0 %}class="danger"{% elseif availableBalance == 0 %}class="warning"{% else %}class="success"{% endif %}>
-                        {{ availableBalance }}&euro;
+                        <span class="label label-default">{{ availableBalance }}&euro;</span>
                     </td>
 
                     <td>
@@ -79,7 +64,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;{{ payment.title }}
                             </td>
                             <td colspan="2">
-                                {{ payment.value }}&euro;
+                                <span class="label label-default">{{ payment.value }}&euro;</span>
                             </td>
                         </tr>
                     {% endfor %}
@@ -98,7 +83,15 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;{{ fixture.title }}
                             </td>
                             <td>
-                                {{ fixture.value }}&euro;
+                                {% if fixture.target > 0 %}
+                                    <span class="label label-default">{{ fixture.value }}&euro; von {{ fixture.target }}&euro;</span>
+                                    <br><br>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ ((fixture.value / fixture.target) * 100)|number_format(0, '.', ',') }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((fixture.value / fixture.target) * 100)|number_format(0, '.', ',') }}%"></div>
+                                    </div>
+                                {% else %}
+                                    <span class="label label-default">{{ fixture.value }}&euro;</span>
+                                {% endif %}
                             </td>
                             <td>
                                 <a href="{{ path('fixtures_delete', {fixtureId: fixture.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span></a>

@@ -6,21 +6,6 @@
 
 {% block content %}
 
-    {# flash messages #}
-    {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            {{flashMessage}}
-        </div>
-    {% endfor %}
-
-    {% for flashMessage in app.session.flashbag.get('error') %}
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            {{flashMessage}}
-        </div>
-    {% endfor %}
-
     <div class="panel panel-success">
         <div class="panel-body">
 
