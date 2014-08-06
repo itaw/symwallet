@@ -5,55 +5,82 @@
 {% block content %}
 
     <div class="well well-sm">
-        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Account</a>
-        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Booking</a>
+        <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Account</a>
+        <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Booking</a>
+        <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Fixture</a>
+        <a href="#" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Payment</a>
     </div>
 
-    <table class="table table-bordered">
-        <tr>
-            <th>Account</th>
-            <th>AccountNumber</th>
-            <th>Balance</th>
-            <th>Available Balance</th>
-        </tr>
+    {% for account in accounts %}
+        {# account #}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ account.title }}{% if account.accountNumber != null %} &middot; {{ account.accountNumber }}{% endif %}</h3>
+            </div>
 
-        {% for account in accounts %}
-            {# account #}
-            <tr>
-                <td>{{ account.title }}</td>
-                <td>{{ account.accountNumber }}</td>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Balance</th>
+                    <th>Available Balance</th>
+                    <th>Actions</th>
+                </tr>
 
-                {% set balance = account.balance %}
-                <td {% if balance < 0 %}class="danger"{% elseif balance == 0 %}class="warning"{% else %}class="success"{% endif %}>
-                    {{ balance }}&euro;
-                </td>
+                {# account #}
+                <tr>
+                    {% set balance = account.balance %}
+                    <td {% if balance < 0 %}class="danger"{% elseif balance == 0 %}class="warning"{% else %}class="success"{% endif %}>
+                        {{ balance }}&euro;
+                    </td>
 
-                {% set availableBalance = getAvailableAccountBalance(account.id) %}
-                <td {% if availableBalance < 0 %}class="danger"{% elseif availableBalance == 0 %}class="warning"{% else %}class="success"{% endif %}>
-                    {{ availableBalance }}&euro;
-                </td>
-            </tr>
+                    {% set availableBalance = getAvailableAccountBalance(account.id) %}
+                    <td {% if availableBalance < 0 %}class="danger"{% elseif availableBalance == 0 %}class="warning"{% else %}class="success"{% endif %}>
+                        {{ availableBalance }}&euro;
+                    </td>
 
-            {% if account.fixtures|length > 0 %}
-                {# fixtures #}
-                <tr class="active">
-                    <td colspan="4">
-                        <strong>Fixtures</strong> <span class="label label-success">{{ getAccountFixturesSum(account.id) }}&euro;</span>
+                    <td>
+                        <a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-trash"></span> </a>
                     </td>
                 </tr>
-                {% for fixture in account.fixtures %}
+
+                {# payments #}
+                {% if account.payments|length > 0 %}                
                     <tr class="active">
-                        <td colspan="1">
-                            &nbsp;&nbsp;&nbsp;&nbsp;{{ fixture.title }}
-                        </td>
                         <td colspan="3">
-                            {{ fixture.value }}&euro;
+                            <strong>Payments</strong>
                         </td>
                     </tr>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
+                    {% for payment in account.payments %}
+                        <tr {% if payment.isIncome == true %}class="success"{% else %}class="danger"{% endif %}>
+                            <td colspan="1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ payment.title }}
+                            </td>
+                            <td colspan="2">
+                                {{ payment.value }}&euro;
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
 
-    </table>    
+                {# fixtures #}
+                {% if account.fixtures|length > 0 %}                
+                    <tr class="active">
+                        <td colspan="3">
+                            <strong>Fixtures</strong> <span class="label label-success">{{ getAccountFixturesSum(account.id) }}&euro;</span>
+                        </td>
+                    </tr>
+                    {% for fixture in account.fixtures %}
+                        <tr class="active">
+                            <td colspan="1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{ fixture.title }}
+                            </td>
+                            <td colspan="2">
+                                {{ fixture.value }}&euro;
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+    {% endfor %}
 
 {% endblock %}

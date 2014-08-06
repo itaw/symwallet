@@ -62,6 +62,15 @@ class Payment
     private $bookings;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_income", type="boolean")
+     * 
+     * @Expose
+     */
+    private $isIncome;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -179,6 +188,29 @@ class Payment
     public function getBookings()
     {
         return $this->bookings;
+    }
+
+    /**
+     * Set isIncome
+     *
+     * @param boolean $isIncome
+     * @return Payment
+     */
+    public function setIsIncome($isIncome)
+    {
+        $this->isIncome = $isIncome;
+
+        return $this;
+    }
+
+    /**
+     * Get isIncome
+     *
+     * @return boolean 
+     */
+    public function getIsIncome()
+    {
+        return $this->isIncome;
     }
 
 }
