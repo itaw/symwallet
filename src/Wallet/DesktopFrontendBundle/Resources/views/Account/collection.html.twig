@@ -4,6 +4,11 @@
 
 {% block content %}
 
+    <div class="well well-sm">
+        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Account</a>
+        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Booking</a>
+    </div>
+
     <table class="table table-bordered">
         <tr>
             <th>Account</th>
@@ -13,6 +18,7 @@
         </tr>
 
         {% for account in accounts %}
+            {# account #}
             <tr>
                 <td>{{ account.title }}</td>
                 <td>{{ account.accountNumber }}</td>
@@ -27,6 +33,25 @@
                     {{ availableBalance }}&euro;
                 </td>
             </tr>
+
+            {% if account.fixtures|length > 0 %}
+                {# fixtures #}
+                <tr class="active">
+                    <td colspan="4">
+                        <strong>Fixtures</strong> <span class="label label-success">{{ getAccountFixturesSum(account.id) }}&euro;</span>
+                    </td>
+                </tr>
+                {% for fixture in account.fixtures %}
+                    <tr class="active">
+                        <td colspan="1">
+                            &nbsp;&nbsp;&nbsp;&nbsp;{{ fixture.title }}
+                        </td>
+                        <td colspan="3">
+                            {{ fixture.value }}&euro;
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
         {% endfor %}
 
     </table>    

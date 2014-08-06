@@ -93,4 +93,23 @@ class AccountBalanceAggregator
         return $bookingsSum;
     }
 
+    public function getFixturesSum($accountId)
+    {
+        $account = $this->doctrine->getRepository('WalletDataBundle:Account')->findOneById($accountId);
+
+        if (!$account) {
+            throw new \Exception('The Account was not found!');
+        }
+
+        //sum fixtures
+        $fixtures = $account->getFixtures();
+        $fixturesSum = 0.0;
+
+        foreach ($fixtures as $f) {
+            $fixturesSum += $f->getValue();
+        }
+
+        return $fixturesSum;
+    }
+
 }

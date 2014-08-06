@@ -22,6 +22,7 @@ class AccountExtension extends \Twig_Extension
         return array(
             'getAccountBalance' => new \Twig_Function_Method($this, 'getAccountBalance'),
             'getAvailableAccountBalance' => new \Twig_Function_Method($this, 'getAvailableAccountBalance'),
+            'getAccountFixturesSum' => new \Twig_Function_Method($this, 'getAccountFixturesSum'),
         );
     }
 
@@ -33,6 +34,11 @@ class AccountExtension extends \Twig_Extension
     public function getAvailableAccountBalance($id)
     {
         return $this->accountBalanceAggregator->getAvailableBalance($id);
+    }
+
+    public function getAccountFixturesSum($id)
+    {
+        return $this->accountBalanceAggregator->getFixturesSum($id);
     }
 
     public function getName()
