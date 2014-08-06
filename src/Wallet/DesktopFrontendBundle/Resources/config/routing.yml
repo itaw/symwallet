@@ -1,0 +1,19 @@
+index:
+    pattern: /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: dashboard, permanent: true }
+    
+imprint:
+    pattern:  /imprint
+    defaults: { _controller: WalletDesktopFrontendBundle:Page:imprint }
+
+dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: WalletDesktopFrontendBundle:Page:dashboard }
+
+accounts:
+    resource: "@WalletDesktopFrontendBundle/Resources/config/Account/routing.yml"
+    prefix:   /accounts
+    
+fixtures:
+    resource: "@WalletDesktopFrontendBundle/Resources/config/Fixture/routing.yml"
+    prefix:   /fixtures

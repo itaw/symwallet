@@ -64,11 +64,27 @@ class Booking
      * @Expose
      */
     private $account;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Payment", inversedBy="bookings")
+     * @ORM\JoinColumn(name="payment_id", referencedColumnName="id")
+     * 
+     * @Expose
+     */
+    private $payment;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Fixture", inversedBy="bookings")
+     * @ORM\JoinColumn(name="fixture_id", referencedColumnName="id")
+     * 
+     * @Expose
+     */
+    private $fixture;
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -91,7 +107,7 @@ class Booking
     /**
      * Get value
      *
-     * @return float
+     * @return float 
      */
     public function getValue()
     {
@@ -114,7 +130,7 @@ class Booking
     /**
      * Get title
      *
-     * @return string
+     * @return string 
      */
     public function getTitle()
     {
@@ -137,7 +153,7 @@ class Booking
     /**
      * Get creationDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreationDate()
     {
@@ -145,19 +161,71 @@ class Booking
     }
 
     /**
-     * @param mixed $account
+     * Set account
+     *
+     * @param \Wallet\DataBundle\Entity\Account $account
+     * @return Booking
      */
-    public function setAccount($account)
+    public function setAccount(\Wallet\DataBundle\Entity\Account $account = null)
     {
         $this->account = $account;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Get account
+     *
+     * @return \Wallet\DataBundle\Entity\Account 
      */
     public function getAccount()
     {
         return $this->account;
     }
 
+    /**
+     * Set payment
+     *
+     * @param \Wallet\DataBundle\Entity\Payment $payment
+     * @return Booking
+     */
+    public function setPayment(\Wallet\DataBundle\Entity\Payment $payment = null)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return \Wallet\DataBundle\Entity\Payment 
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * Set fixture
+     *
+     * @param \Wallet\DataBundle\Entity\Fixture $fixture
+     * @return Booking
+     */
+    public function setFixture(\Wallet\DataBundle\Entity\Fixture $fixture = null)
+    {
+        $this->fixture = $fixture;
+
+        return $this;
+    }
+
+    /**
+     * Get fixture
+     *
+     * @return \Wallet\DataBundle\Entity\Fixture 
+     */
+    public function getFixture()
+    {
+        return $this->fixture;
+    }
 }

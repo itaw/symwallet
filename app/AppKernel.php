@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new SunCat\MobileDetectBundle\MobileDetectBundle(),
             new Wallet\ApiBundle\WalletApiBundle(),
             new Wallet\DesktopFrontendBundle\WalletDesktopFrontendBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Wallet\UserBundle\WalletUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

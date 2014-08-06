@@ -1,0 +1,50 @@
+{% extends "WalletDesktopFrontendBundle::layout.html.twig" %}
+
+{% block currentPage %}accounts{% endblock %}
+
+{% block title %}Update Fixture{% endblock %}
+
+{% block content %}
+
+    <div class="panel panel-warning">
+        <div class="panel-body">
+
+            <form method="post">
+                <legend>Update Fixture</legend>
+
+                <div class="form-group">
+                    <label>Account</label>
+                    <select class="form-control" name="account">
+                        {% for account in accounts %}
+                            <option value="{{ account.id }}" {% if account.id == fixture.account.id %}selected{% endif %}>
+                                {{ account.title }}{% if account.accountNumber != null %} &middot; {{ account.accountNumber }}{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input id="title" name="title" type="text" placeholder="Title" class="form-control" required="" value="{{ fixture.title }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="target">Target</label>
+                    <div class="input-group">
+                        <input id="target" name="target" class="form-control" placeholder="0,00" type="text" value="{{ fixture.target }}">
+                        <span class="input-group-addon">€</span>
+                    </div>
+                </div>
+
+                <input type="hidden" name="sent" value="1">
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-warning">Update</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

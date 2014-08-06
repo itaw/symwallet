@@ -69,19 +69,27 @@ class Client
 
     /**
      * @ORM\OneToMany(targetEntity="Account", mappedBy="client")
-     * 
      */
     private $accounts;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Wallet\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
     public function __construct()
     {
-        $this->accounts = new ArrayCollection();
+        $this->accounts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -104,7 +112,7 @@ class Client
     /**
      * Get firstName
      *
-     * @return string
+     * @return string 
      */
     public function getFirstName()
     {
@@ -127,7 +135,7 @@ class Client
     /**
      * Get lastName
      *
-     * @return string
+     * @return string 
      */
     public function getLastName()
     {
@@ -150,7 +158,7 @@ class Client
     /**
      * Get creationDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreationDate()
     {
@@ -173,7 +181,7 @@ class Client
     /**
      * Get editDate
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getEditDate()
     {
@@ -181,19 +189,59 @@ class Client
     }
 
     /**
-     * @param mixed $accounts
+     * Add accounts
+     *
+     * @param \Wallet\DataBundle\Entity\Account $accounts
+     * @return Client
      */
-    public function setAccounts($accounts)
+    public function addAccount(\Wallet\DataBundle\Entity\Account $accounts)
     {
-        $this->accounts = $accounts;
+        $this->accounts[] = $accounts;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * Remove accounts
+     *
+     * @param \Wallet\DataBundle\Entity\Account $accounts
+     */
+    public function removeAccount(\Wallet\DataBundle\Entity\Account $accounts)
+    {
+        $this->accounts->removeElement($accounts);
+    }
+
+    /**
+     * Get accounts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getAccounts()
     {
         return $this->accounts;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Wallet\UserBundle\Entity\User $user
+     * @return Client
+     */
+    public function setUser(\Wallet\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Wallet\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
 }

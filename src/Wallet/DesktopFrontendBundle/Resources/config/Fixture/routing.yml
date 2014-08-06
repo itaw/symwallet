@@ -1,0 +1,11 @@
+fixtures_create:
+    pattern:  /create
+    defaults: { _controller: WalletDesktopFrontendBundle:Fixture:create }
+    
+fixtures_delete:
+    pattern:  /{fixtureId}/delete
+    defaults: { _controller: WalletDesktopFrontendBundle:Fixture:delete }
+    
+fixtures_update:
+    pattern:  /{fixtureId}/update
+    defaults: { _controller: WalletDesktopFrontendBundle:Fixture:update }
