@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Wallet\DesktopFrontendBundle\WalletDesktopFrontendBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Wallet\UserBundle\WalletUserBundle(),
+            new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

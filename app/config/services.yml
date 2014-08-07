@@ -9,3 +9,10 @@ services:
             - @wallet.account_balance_aggregator
         tags:
             - { name: twig.extension }
+    wallet.user.user_creation:
+        class: Wallet\UserBundle\EventListener\UserCreationListener
+        arguments: 
+            - @doctrine
+            - @service_container
+        tags:
+            - { name: kernel.event_subscriber }
