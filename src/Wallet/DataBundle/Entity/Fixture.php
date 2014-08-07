@@ -49,7 +49,7 @@ class Fixture
     private $value;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Account", inversedBy="bookings")
+     * @ORM\ManyToOne(targetEntity="Account", inversedBy="fixtures")
      * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
      * 
      * @Expose
