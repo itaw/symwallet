@@ -31,6 +31,33 @@ abstract class AbstractApiController extends Controller implements CorsControlle
     }
 
     /**
+     * Generates a JSON-Exception
+     * 
+     * @param string $text      Text
+     * @param int $statusCode   HTTP-Status Code
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function jsonException($text, $statusCode = 500, $type = 'Exception')
+    {
+        $exception = array(
+            'status' => $statusCode,
+            'type' => $type,
+            'message' => $text
+        );
+
+        $response = new Response($this->serialize($exception));
+        $response->headers->set('Content-Type', 'application/json');
+        $response->setStatusCode($statusCode);
+
+        return $response;
+    }
+
+    protected function jsonNotFoundException($text)
+    {
+        return $this->jsonException($text, 404, 'NotFoundException');
+    }
+
+    /**
      * Serilizes Data to JSON
      * 
      * @param object $data  Entity Data

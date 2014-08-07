@@ -9,3 +9,7 @@ api_bookings:
 api_clients:
     resource: "@WalletApiBundle/Resources/config/Client/routing.yml"
     prefix:   /clients
+    
+api_fixtures:
+    resource: "@WalletApiBundle/Resources/config/Fixture/routing.yml"
+    prefix:   /fixtures

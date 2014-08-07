@@ -1,0 +1,24 @@
+api_fixtures_collection:
+    pattern:  /
+    defaults: { _controller: WalletApiBundle:Fixture:collection }
+    methods: [GET]
+    
+api_fixtures_create:
+    pattern:  /
+    defaults: { _controller: WalletApiBundle:Fixture:create }
+    methods: [POST]
+
+api_fixtures_object:
+    pattern:  /{fixtureId}
+    defaults: { _controller: WalletApiBundle:Fixture:object }
+    methods: [GET]
+    
+api_fixtures_update:
+    pattern:  /{fixtureId}
+    defaults: { _controller: WalletApiBundle:Fixture:update }
+    methods: [PUT]
+    
+api_fixtures_delete:
+    pattern:  /{fixtureId}
+    defaults: { _controller: WalletApiBundle:Fixture:delete }
+    methods: [DELETE]

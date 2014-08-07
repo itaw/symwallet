@@ -38,4 +38,12 @@ class AccountController extends AbstractApiController
         return $this->jsonResponse($this->serialize($bookings));
     }
 
+    public function getFixturesAction($accountId)
+    {
+        $account = $this->getDoctrine()->getRepository('WalletDataBundle:Account')->findOneById($accountId);
+        $fixtures = $this->getDoctrine()->getRepository('WalletDataBundle:Fixture')->findByAccount($account);
+
+        return $this->jsonResponse($this->serialize($fixtures));
+    }
+
 }
